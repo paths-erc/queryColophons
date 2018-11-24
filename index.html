@@ -8,20 +8,29 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <script type="text/javascript" src="./xpath.js"></script>
-    <script type="text/javascript" src="./getAllColophons.js"></script>
-    <script type="text/javascript" src="./RunQuery.js"></script>
 
     <title>Query PAThs colophons</title>
   </head>
   <body>
     <div class="container">
       <div class="jumbotron">
-        <h1>
-          Query PAThs colophons
-          <br>
-          <small>by j. Bogdani</small>
-        </h1>
+        <h1>Query PAThs colophons</h1>
+        <span class="text-secondary">A visual tool to easily query texts form
+          Coptic colophons published on
+          <a href="https://github.com/paths-erc/coptic-texts/tree/master/colophons" target="_blank">
+            PAThs' official repository on GitHub</a>.
+        </span>
+        <hr>
+        <div class="text-right">
+          <p>
+            <a href="https://github.com/paths-erc/queryColophons/issues" target="_blank">
+              Report issues with this page
+            </a>
+            <br>
+            <a href="https://github.com/paths-erc/coptic-texts/issues" target="_blank">
+              Report issues with colophons’ texts
+            </a>
+        </div>
       </div>
       <div id="msg"></div>
 
@@ -29,6 +38,9 @@
         <hr>
 
         <div class="form-row align-items-center">
+          <div class="col-auto">
+            <strong>Search for:</strong>
+          </div>
           <div class="col">
             <!-- <input type="text"  class="form-control mb-2" placeholder="xpath" id="xpath" value="//p:placeName"> -->
             <select class="form-control mb-2" id="xpath">
@@ -115,7 +127,20 @@
 
       <div id="text" class="bg-light p-5"></div>
 
+      <div class="footer mt-5 border-top py-5 bg-light">
+
+        <div class="text-center">
+          <a href="https://github.com/paths-erc/queryColophons/blob/master/LICENSE" target="_blank">
+            MIT License
+          </a><br>
+          Copyright (c) 2018 Julian Bogdani, <a href="http://paths.uniroma1.it" target="_blank">PAThs</a>
+        </div>
+      </div>
+
     </div>
+
+
+    <script type="text/javascript" src="./queryColophons.js"></script>
 
     <script type="text/javascript">
 
@@ -136,31 +161,31 @@
         }
       }
 
-      // document.getElementById('form').addEventListener('submit', (e)=>{
-      //   e.preventDefault();
-      //   const xpath = document.getElementById('xpath').value;
-      //   history.replaceState(null,null, window.location.pathname + `?xpath=${encodeURI(xpath)}`)
-      //   paginateQuery(d, xpath);
-      // });
-      //
-      //
-      //
-      // getAllColophons(() => {
-      //   document.getElementById('msg').innerHTML = '<div class="bg-warning p-3 text-white">Loading colophons from GitHub...</div>';
-      // }).then(
-      //
-      //   array => {
-      //     document.getElementById('msg').innerHTML = `<div class="bg-success p-3 text-white"><big>&#10003;</big> ${array.length} colophons loaded. Ready to start</div>`;
-      //     d = array;
-      //
-      //     let qs = document.location.search;
-      //     if(qs){
-      //       paginateQuery(d, decodeURI(qs.replace('?xpath=', '')));
-      //     }
-      //
+      document.getElementById('form').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const xpath = document.getElementById('xpath').value;
+        history.replaceState(null,null, window.location.pathname + `?xpath=${encodeURI(xpath)}`)
+        paginateQuery(d, xpath);
+      });
+
+
+
+      getAllColophons(() => {
+        document.getElementById('msg').innerHTML = '<div class="bg-warning p-3 text-white">Loading colophons from GitHub...</div>';
+      }).then(
+
+        array => {
+          document.getElementById('msg').innerHTML = `<div class="bg-success p-3 text-white"><big>&#10003;</big> ${array.length} colophons loaded. Ready to start</div>`;
+          d = array;
+
+          let qs = document.location.search;
+          if(qs){
+            paginateQuery(d, decodeURI(qs.replace('?xpath=', '')));
+          }
+
           document.getElementById('form').style.display = "block"
-      //   }
-      // );
+        }
+      );
 
     </script>
   </body>
