@@ -14,6 +14,16 @@ coptic colophons please refer to the [dedicated repository](https://github.com/p
 
 Feedback and suggestions are most welcome!
 
+## Browser support
+This software is targeted to modern browsers and makes use of features not
+supported in older ones, like:
+- [@font-face](https://caniuse.com/#search=%40font-face) for loading [Antinoou font](https://www.evertype.com/fonts/coptic/) used to render Coptic
+- [fetch](https://caniuse.com/#search=fetch) used to get data from GitHub
+- [Promise](https://caniuse.com/#search=Promise) for async operations
+- ES6 variables
+
+There is no plan to support in the future older browsers.
+
 # How to cite
 This software is archived in Zenodo. Please cite it by referring the DOI: 10.5281/zenodo.1495585
 
