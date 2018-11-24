@@ -48,7 +48,7 @@ function RunQuery(data, xpath){
       data = data.join("<br>");
       return `<li>
         <div class="row">
-        <div class="col">${e.val}</div>
+        <div class="col coptic">${e.val}</div>
         <div class="col">${data}</div>
         <div class="col text-secondary"><a href="https://github.com/paths-erc/coptic-texts/blob/master/colophons/${i.file}.xml" target="_blank">${i.file}</a></div>
         </div>
