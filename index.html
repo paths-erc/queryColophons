@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script type="text/javascript" src="./xpath.js"></script>
+    <script type="text/javascript" src="./getAllColophons.js"></script>
+    <script type="text/javascript" src="./RunQuery.js"></script>
+
+    <title>Query PAThs colophons</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>
+          Query PAThs colophons
+          <br>
+          <small>by j. Bogdani</small>
+        </h1>
+      </div>
+      <div id="msg"></div>
+
+      <form style="display:none" id="form">
+        <hr>
+
+        <div class="form-row align-items-center">
+          <div class="col">
+            <!-- <input type="text"  class="form-control mb-2" placeholder="xpath" id="xpath" value="//p:placeName"> -->
+            <select class="form-control mb-2" id="xpath">
+              <option value="//p:placeName">placeName</option>
+              <optgroup label="Place types">
+                <option value="//p:placeName[@type='country']">placeName, type: country</option>
+                <option value="//p:placeName[@type='region']">placeName, type: region</option>
+                <option value="//p:placeName[@type='district_nomos']">placeName, type: district_nomos</option>
+                <option value="//p:placeName[@type='city_village']">placeName, type: city_village</option>
+                <option value="//p:placeName[@type='topos_ma']">placeName, type: topos_ma</option>
+                <option value="//p:placeName[@type='monastery']">placeName, type: monastery</option>
+                <option value="//p:placeName[@type='church_basilica']">placeName, type: church_basilica</option>
+                <option value="//p:placeName[@type='episkopeion']">placeName, type: episkopeion</option>
+                <option value="//p:placeName[@type='chapel']">placeName, type: chapel</option>
+                <option value="//p:placeName[@type='oratory']">placeName, type: oratory</option>
+                <option value="//p:placeName[@type='martyr_shrine']">placeName, type: martyr_shrine</option>
+                <option value="//p:placeName[@type='temple']">placeName, type: temple</option>
+                <option value="//p:placeName[@type='hermitage']">placeName, type: hermitage</option>
+                <option value="//p:placeName[@type='tomb']">placeName, type: tomb</option>
+                <option value="//p:placeName[@type='mount']">placeName, type: mount</option>
+                <option value="//p:placeName[@type='river']">placeName, type: river</option>
+                <option value="//p:placeName[@type='lake']">placeName, type: lake</option>
+                <option value="//p:placeName[@type='harbour']">placeName, type: harbour</option>
+                <option value="//p:placeName[@type='biblical']">placeName, type: biblical</option>
+              </optgroup>
+
+              <option value="//p:persName">persName</option>
+              <optgroup label="Person types">
+                <option value="//p:persName[@type='saint']">persName, type: saint</option>
+                <option value="//p:persName[@type='martyr']">persName, type: martyr</option>
+                <option value="//p:persName[@type='apostle']">persName, type: apostle</option>
+                <option value="//p:persName[@type='bishop']">persName, type: bishop</option>
+                <option value="//p:persName[@type='archi_bishop']">persName, type: archi_bishop</option>
+                <option value="//p:persName[@type='monk']">persName, type: monk</option>
+                <option value="//p:persName[@type='arch_angel']">persName, type: arch_angel</option>
+                <option value="//p:persName[@type='daemon']">persName, type: daemon</option>
+                <option value="//p:persName[@type='emperor_king']">persName, type: emperor_king</option>
+                <option value="//p:persName[@type='civil']">persName, type: civil</option>
+                <option value="//p:persName[@type='military']">persName, type: military</option>
+                <option value="//p:persName[@type='ecclesiastical']">persName, type: ecclesiastical</option>
+                <option value="//p:persName[@type='biblical']">persName, type: biblical</option>
+                <option value="//p:persName[@type='pagan_deity']">persName, type: pagan_deity</option>
+                <option value="//p:persName[@type='donor']">persName, type: donor</option>
+                <option value="//p:persName[@type='copyist']">persName, type: copyist</option>
+                <option value="//p:persName[@type='restorer']">persName, type: restorer</option>
+              </optgroup>
+
+              <option value="//p:roleName">roleName</option>
+              <optgroup label="Role types">
+                <option value="//p:roleName[@type='religious']">roleName, type: religious</option>
+                <option value="//p:roleName[@type='ecclesiastical']">roleName, type: ecclesiastical</option>
+                <option value="//p:roleName[@type='civil']">roleName, type: civil</option>
+                <option value="//p:roleName[@type='military']">roleName, type: military</option>
+              </optgroup>
+
+              <option value="//p:org">org</option>
+              <optgroup label="Organization types">
+                <option value="//p:org[@type='religious']">org, type: religious</option>
+                <option value="//p:org[@type='ethnic']">org, type: ethnic</option>
+              </optgroup>
+
+              <option value="//p:quote">org</option>
+              <optgroup label="Quote types">
+                <option value="//p:quote[@type='religious']">biblical, type: religious</option>
+                <option value="//p:quote[@type='ethnic']">classical, type: ethnic</option>
+              </optgroup>
+
+              <option value="//p:rs">org</option>
+              <optgroup label="Quote types">
+                <option value="//p:rs[@type='object']">rs, type: object</option>
+                <option value="//p:rs[@type='furniture']">rs, type: furniture</option>
+                <option value="//p:rs[@type='service']">rs, type: service</option>
+              </optgroup>
+
+            </select>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </div>
+        </div>
+        <hr>
+
+      </form>
+
+      <div id="text" class="bg-light p-5"></div>
+
+    </div>
+
+    <script type="text/javascript">
+
+      let d = [];
+
+      function paginateQuery(d, xpath){
+        if (d.length < 1){
+          document.getElementById('msg').innerHTML = 'No data to query';
+          return false;
+        } else {
+          html = RunQuery(d, xpath);
+        }
+
+        if(html.length < 10){
+          document.getElementById('text').innerHTML = `Sorry! No result found for <code>${xpath}</code>`;
+        } else {
+          document.getElementById('text').innerHTML = html;
+        }
+      }
+
+      // document.getElementById('form').addEventListener('submit', (e)=>{
+      //   e.preventDefault();
+      //   const xpath = document.getElementById('xpath').value;
+      //   history.replaceState(null,null, window.location.pathname + `?xpath=${encodeURI(xpath)}`)
+      //   paginateQuery(d, xpath);
+      // });
+      //
+      //
+      //
+      // getAllColophons(() => {
+      //   document.getElementById('msg').innerHTML = '<div class="bg-warning p-3 text-white">Loading colophons from GitHub...</div>';
+      // }).then(
+      //
+      //   array => {
+      //     document.getElementById('msg').innerHTML = `<div class="bg-success p-3 text-white"><big>&#10003;</big> ${array.length} colophons loaded. Ready to start</div>`;
+      //     d = array;
+      //
+      //     let qs = document.location.search;
+      //     if(qs){
+      //       paginateQuery(d, decodeURI(qs.replace('?xpath=', '')));
+      //     }
+      //
+          document.getElementById('form').style.display = "block"
+      //   }
+      // );
+
+    </script>
+  </body>
+</html>
