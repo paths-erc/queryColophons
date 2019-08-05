@@ -25,7 +25,7 @@ supported in older ones, like:
 There is no plan to support in the future older browsers.
 
 # How to cite
-This software is archived in Zenodo. Please cite it by referring the DOI: 10.5281/zenodo.1495585
+This software is archived in Zenodo. Please cite it by referring the DOI: [10.5281/zenodo.1495586](https://doi.org/10.5281/zenodo.1495585)
 
 [![DOI](https://zenodo.org/badge/158960513.svg)](https://zenodo.org/badge/latestdoi/158960513)
 
